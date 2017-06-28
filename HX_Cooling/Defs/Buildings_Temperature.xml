@@ -1,0 +1,269 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Defs>
+	<!--Small Cooler-->
+	<ThingDef ParentName="BuildingBase">
+        <defName>SCooler</defName>
+		<label>Small Cooler</label>
+		<thingClass>Building_Cooler</thingClass>        
+        <description>A small sized cooler with exhausts.</description>
+        <graphicData>
+            <texPath>Coolers/SCooler</texPath>
+            <graphicClass>Graphic_Multi</graphicClass>
+            <drawSize>(1,1)</drawSize>
+        </graphicData>
+        <statBases>
+            <WorkToBuild>1400</WorkToBuild>
+            <MaxHitPoints>100</MaxHitPoints>
+            <Flammability>0.1</Flammability>
+            <Beauty>-10</Beauty>
+        </statBases>
+		<costList>
+			<SteelBar>50</SteelBar>
+			<Component>6</Component>
+			<ElectronicComponents>3</ElectronicComponents>
+			<Mechanism>2</Mechanism>
+		</costList>
+        <building>
+            <canPlaceOverWall>true</canPlaceOverWall>
+        </building>
+        <comps>
+            <li Class="CompProperties_Power">
+                <compClass>CompPowerTrader</compClass>
+                <startElectricalFires>true</startElectricalFires>
+                <basePowerConsumption>100</basePowerConsumption>
+                <soundPowerOn>PowerOnSmall</soundPowerOn>
+                <soundPowerOff>PowerOffSmall</soundPowerOff>
+                <transmitsPower>true</transmitsPower>
+            </li>
+            <li Class="CompProperties_TempControl">
+				<compClass>CompTempControl</compClass>
+                <energyPerSecond>-17</energyPerSecond>
+            </li>
+			<li Class="CompProperties_Flickable"/>
+			<li Class="CompProperties_Breakdownable"/>
+        </comps>
+        <placeWorkers>
+			<li>PlaceWorker_Cooler</li>
+        </placeWorkers>
+        <altitudeLayer>Building</altitudeLayer>
+        <blockLight>true</blockLight>
+        <castEdgeShadows>true</castEdgeShadows>
+        <staticSunShadowHeight>1.0</staticSunShadowHeight>
+        <designationCategory>Temperature</designationCategory>
+        <drawPlaceWorkersWhileSelected>true</drawPlaceWorkersWhileSelected>
+        <fillPercent>1</fillPercent>
+        <holdsRoof>true</holdsRoof>
+        <passability>Impassable</passability>
+        <size>(1,1)</size>
+        <terrainAffordanceNeeded>Heavy</terrainAffordanceNeeded>
+        <tickerType>Rare</tickerType>
+		<researchPrerequisites>
+			<li>AirConditioning</li>
+		</researchPrerequisites>
+    </ThingDef>
+	<!-- Wall Cooler -->
+	<ThingDef ParentName="BuildingBase">
+		<defName>Wcooler</defName>
+		<label>Wall Cooler</label>
+		<thingClass>Building_Cooler</thingClass>
+        <graphicData>
+			<texPath>Coolers/MediumCooler</texPath>
+            <graphicClass>Graphic_Multi</graphicClass>
+		  <damageData>
+			<cornerTL>Damage/Corner</cornerTL>
+			<cornerTR>Damage/Corner</cornerTR>
+			<cornerBL>Damage/Corner</cornerBL>
+			<cornerBR>Damage/Corner</cornerBR>
+		  </damageData>
+        </graphicData>
+		<altitudeLayer>PawnUnused</altitudeLayer>
+		<fillPercent>0.99</fillPercent>
+        <coversFloor>true</coversFloor>
+        <blockLight>true</blockLight>
+        <castEdgeShadows>true</castEdgeShadows>
+        <staticSunShadowHeight>1.0</staticSunShadowHeight>
+        <statBases>
+            <WorkToBuild>1600</WorkToBuild>
+            <MaxHitPoints>100</MaxHitPoints>
+            <Flammability>1.0</Flammability>
+        </statBases>
+        <tickerType>Rare</tickerType>
+        <description>An electrical device that fits into a wall and pushes cold air into a room. Its exhaust port generates a lot of heat. Can be used to cool down rooms or to create a walk-in freezer.
+        </description>
+		<costList>
+		    <Plastic>10</Plastic>
+			<Rubber>5</Rubber>
+			<Component>6</Component>
+			<ElectronicComponents>2</ElectronicComponents>
+			<Mechanism>2</Mechanism>
+		</costList>
+        <terrainAffordanceNeeded>Heavy</terrainAffordanceNeeded>
+        <drawPlaceWorkersWhileSelected>true</drawPlaceWorkersWhileSelected>
+        <building>
+			<isEdifice>false</isEdifice>
+			<!--<canPlaceOverWall>true</canPlaceOverWall>-->
+        </building>
+        <comps>
+			<li Class="SK.CompProperties_RestrictedPlacement">
+				<compClass>SK.CompRestrictedPlacement</compClass>
+					<thingDefs>
+                    <li>Wall</li>
+					<li>ClutterUtilityWall</li>
+					<li>ClutterSilverWall</li>
+					<li>ClutterUWallLight</li>
+					<!--<li>MetalWall</li>
+					<li>BWall</li>
+					<li>WallLog</li>-->
+					</thingDefs>
+				</li>
+            <li Class="CompProperties_Power">
+                <compClass>CompPowerTrader</compClass>
+                <soundPowerOn>PowerOnSmall</soundPowerOn>
+                <soundPowerOff>PowerOffSmall</soundPowerOff>
+                <basePowerConsumption>180</basePowerConsumption>
+            </li>
+            <li Class="CompProperties_TempControl">
+				<compClass>CompTempControl</compClass>
+                <energyPerSecond>-25</energyPerSecond> <!-- -21 -->
+            </li>
+			<li Class="CompProperties_Flickable"/>
+			<li Class="CompProperties_Breakdownable"/>
+        </comps>
+		<placeWorkers>
+            <li>PlaceWorker_Cooler</li>
+			<li>SK.PlaceWorker_OnlyOnThing</li>
+            <li>SK.PlaceWorker_OnWall</li>
+        </placeWorkers>
+        <designationCategory>Temperature</designationCategory>
+        <designationHotKey>Misc2</designationHotKey>
+		<researchPrerequisites>
+			<li>AirConditioning</li>
+		</researchPrerequisites>
+    </ThingDef>
+	<!--Medium Cooler-->
+	<ThingDef ParentName="BuildingBase">
+        <defName>MCooler</defName>
+		<label>Medium Cooler</label>
+		<thingClass>Building_Cooler</thingClass>        
+        <description>A Medium sized cooler with exhausts.</description>
+        <graphicData>
+            <texPath>Coolers/IndustrialCooler</texPath>
+            <graphicClass>Graphic_Multi</graphicClass>
+            <drawSize>(2,1)</drawSize>
+        </graphicData>
+        <statBases>
+            <WorkToBuild>7000</WorkToBuild>
+            <MaxHitPoints>250</MaxHitPoints>
+            <Flammability>0</Flammability>
+            <Beauty>-30</Beauty>
+        </statBases>
+		<costList>
+      		<Plastic>50</Plastic>
+			<Rubber>30</Rubber>
+			<Component>8</Component>
+			<ElectronicComponents>8</ElectronicComponents>
+			<Mechanism>4</Mechanism>
+		</costList>
+        <building>
+            <canPlaceOverWall>true</canPlaceOverWall>
+        </building>
+        <comps>
+            <li Class="CompProperties_Power">
+                <compClass>CompPowerTrader</compClass>
+                <startElectricalFires>true</startElectricalFires>
+                <basePowerConsumption>400</basePowerConsumption>
+                <soundPowerOn>PowerOnSmall</soundPowerOn>
+                <soundAmbientPowered>GeothermalPlant_Ambience</soundAmbientPowered>
+                <soundPowerOff>PowerOffSmall</soundPowerOff>
+                <transmitsPower>true</transmitsPower>
+            </li>
+            <li Class="CompProperties_TempControl">
+				<compClass>CompTempControl</compClass>
+                <energyPerSecond>-50</energyPerSecond>
+            </li>
+			<li Class="CompProperties_Flickable"/>
+			<li Class="CompProperties_Breakdownable"/>
+        </comps>
+        <placeWorkers>
+			<li>PlaceWorker_Cooler</li>
+        </placeWorkers>
+        <altitudeLayer>Building</altitudeLayer>
+        <blockLight>true</blockLight>
+        <castEdgeShadows>true</castEdgeShadows>
+        <staticSunShadowHeight>1.0</staticSunShadowHeight>
+        <designationCategory>Temperature</designationCategory>
+        <drawPlaceWorkersWhileSelected>true</drawPlaceWorkersWhileSelected>
+        <fillPercent>1</fillPercent>
+        <holdsRoof>true</holdsRoof>
+        <passability>Impassable</passability>
+        <size>(2,1)</size>
+        <terrainAffordanceNeeded>Heavy</terrainAffordanceNeeded>
+        <tickerType>Rare</tickerType>
+		<researchPrerequisites>
+			<li>AirConditioning</li>
+		</researchPrerequisites>
+    </ThingDef>
+	<!--SuperCooler-->
+	<ThingDef ParentName="BuildingBase">
+		<defName>SuperCooler</defName>
+		<label>Industrial Cooler</label>
+		<description>An exhaustless massive electrical device that pushes cold air into a room.</description>
+		<thingClass>Building_Heater</thingClass>
+		<graphicData>
+			<texPath>Coolers/SuperCooler</texPath>
+			<graphicClass>Graphic_Multi</graphicClass>
+			<drawSize>(2,2)</drawSize>
+			<damageData>
+				<cornerTL>Damage/Corner</cornerTL>
+				<cornerTR>Damage/Corner</cornerTR>
+				<cornerBL>Damage/Corner</cornerBL>
+				<cornerBR>Damage/Corner</cornerBR>
+			</damageData>
+		</graphicData>
+		<size>(2,2)</size>
+		<minifiedDef>MinifiedFurniture</minifiedDef>
+		<altitudeLayer>Building</altitudeLayer>
+		<passability>PassThroughOnly</passability>
+		<pathCost>150</pathCost>
+		<blockWind>true</blockWind>
+		<rotatable>true</rotatable>
+		<fillPercent>0.8</fillPercent>
+		<statBases>
+			<WorkToMake>2000</WorkToMake>
+			<MaxHitPoints>100</MaxHitPoints>
+			<Flammability>0.1</Flammability>
+		</statBases>
+		<tickerType>Rare</tickerType>
+		<costList>
+			<Titanium>100</Titanium>
+      		<Plastic>25</Plastic>
+			<Rubber>20</Rubber>
+			<Component>8</Component>
+			<ElectronicComponents>8</ElectronicComponents>
+			<Electronics>2</Electronics>
+		</costList>
+		<terrainAffordanceNeeded>Heavy</terrainAffordanceNeeded>
+		<placeWorkers>
+			<li>PlaceWorker_CoolerSimple</li>
+		</placeWorkers>
+		<drawPlaceWorkersWhileSelected>true</drawPlaceWorkersWhileSelected>
+		<comps>
+			<li Class="CompProperties_Power">
+				<compClass>CompPowerTrader</compClass>
+				<startElectricalFires>false</startElectricalFires>
+				<basePowerConsumption>2000</basePowerConsumption>
+			</li>
+				<li Class="CompProperties_Flickable"/>
+				<li Class="CompProperties_TempControl">
+				<energyPerSecond>-190</energyPerSecond>
+			</li>
+			<li Class="CompProperties_Glower">
+				<glowRadius>8</glowRadius>
+				<glowColor>(0,200,255,0)</glowColor>
+			</li>
+		</comps>
+		<designationCategory>Temperature</designationCategory>
+		<researchPrerequisites><li>SK_InfrastructureIV</li></researchPrerequisites>
+	</ThingDef>
+	
+</Defs>
